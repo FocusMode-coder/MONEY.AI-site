@@ -3,15 +3,59 @@
 <head>
   <meta charset="utf-8">
   <title>MONEY.AI – TikTok Callback</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      color: #FFD700;
+    }
+    .box {
+      border: 1px solid #333;
+      padding: 20px;
+      border-radius: 10px;
+      background: #1a1a1a;
+      max-width: 500px;
+    }
+    .code {
+      margin-top: 15px;
+      padding: 10px;
+      background: #000;
+      border: 1px dashed #FFD700;
+      border-radius: 6px;
+      font-family: monospace;
+      word-break: break-all;
+      color: #FFD700;
+    }
+  </style>
 </head>
 <body>
-  <h2>Login successful!</h2>
-  <p>If you see this page, TikTok redirected you correctly.</p>
+  <div class="box">
+    <h1>Login Successful ✅</h1>
+    <p>If you reached this page, TikTok has redirected you correctly.</p>
+    <p>Your authorization code:</p>
+    <div id="codeBox" class="code">Waiting...</div>
+  </div>
+
   <script>
-    // Capture the authorization code from URL
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
-    console.log("TikTok authorization code:", code);
+    if (code) {
+      document.getElementById("codeBox").innerText = code;
+      console.log("TikTok authorization code:", code);
+    } else {
+      document.getElementById("codeBox").innerText = "No code received.";
+    }
   </script>
 </body>
 </html>

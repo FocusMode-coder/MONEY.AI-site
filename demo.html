@@ -10,6 +10,17 @@
   <meta property="og:description" content="TikTok integration demo flow for verification.">
   <meta property="og:image" content="assets/logo.png">
   <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Estilos mínimos para el efecto del flujo (independiente de style.css) -->
+  <style>
+    .steps{display:flex;gap:16px;flex-wrap:wrap;margin-top:20px}
+    .step{background:#0f0f0f;border:1px solid #1b1b1b;border-radius:16px;padding:20px;flex:1 1 280px;min-height:180px;position:relative}
+    .step h3{margin-top:0}
+    .status{margin-top:10px;font-size:14px;color:#9aa0a6}
+    .success{color:#22c55e}
+    .step.ok{border-color:#214a2f;box-shadow:0 0 0 1px #214a2f inset}
+    .btn-icon{display:inline-flex;align-items:center;gap:8px}
+  </style>
 </head>
 <body>
 <div class="container">
@@ -36,22 +47,29 @@
     </p>
   </section>
 
-  <div class="steps" style="display:flex;gap:16px;margin-top:20px;flex-wrap:wrap">
-    <div class="card">
+  <div class="steps">
+    <!-- Step 1 -->
+    <div class="step" id="step1">
       <h3>Step 1: Login with TikTok</h3>
       <p>Users authenticate via TikTok to create a secure session in Money.AI.</p>
-      <button class="btn">🔑 Login with TikTok</button>
-      <p class="meta">Waiting for user action…</p>
+      <button class="btn btn-icon" id="loginBtn">
+        <span>🔑</span> <span>Login with TikTok</span>
+      </button>
+      <div class="status" id="status1">Waiting for user action…</div>
     </div>
-    <div class="card">
+
+    <!-- Step 2 -->
+    <div class="step" id="step2">
       <h3>Step 2: Account Connected</h3>
       <p>Upon consent, Money.AI receives basic profile data to personalize content.</p>
-      <p class="meta">Status: <strong>Not connected</strong></p>
+      <div class="status" id="status2">Not connected. <span class="meta">Scopes: basic profile</span></div>
     </div>
-    <div class="card">
+
+    <!-- Step 3 -->
+    <div class="step" id="step3">
       <h3>Step 3: Access Learning Content</h3>
       <p>Users access AI-powered lessons and summaries in Money.AI.</p>
-      <p class="meta">Locked until login.</p>
+      <div class="status" id="status3">Locked until login.</div>
     </div>
   </div>
 
@@ -66,9 +84,42 @@
 
   <!-- FOOTER -->
   <div class="footer">
-    © 2025 MONEY.AI • <span class="meta">Contact: 
+    © 2025 MONEY.AI • <span class="meta">Contact:
     <a href="mailto:support@moneyai.app">support@moneyai.app</a></span>
   </div>
 </div>
+
+<script>
+  // Simulación simple del flujo de login
+  const btn = document.getElementById('loginBtn');
+  const step1 = document.getElementById('step1');
+  const step2 = document.getElementById('step2');
+  const step3 = document.getElementById('step3');
+  const s1 = document.getElementById('status1');
+  const s2 = document.getElementById('status2');
+  const s3 = document.getElementById('status3');
+
+  btn.addEventListener('click', () => {
+    // Marca Step 1 como en progreso/completado
+    step1.classList.add('ok');
+    s1.textContent = 'Redirecting to TikTok… (simulated)';
+    btn.disabled = true;
+
+    // Después de 0.9s, “vuelve” con consentimiento
+    setTimeout(() => {
+      s1.textContent = 'User granted permission ✓';
+
+      // Step 2: cuenta conectada
+      step2.classList.add('ok');
+      s2.innerHTML = '<span class="success">Connected as @demo_user</span>';
+
+      // Luego de 0.8s, desbloquea contenido
+      setTimeout(() => {
+        step3.classList.add('ok');
+        s3.innerHTML = '<span class="success">Content unlocked: AI-powered finance lessons available.</span>';
+      }, 800);
+    }, 900);
+  });
+</script>
 </body>
 </html>

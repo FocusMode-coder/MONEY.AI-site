@@ -1,119 +1,74 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Money.AI – TikTok Demo Flow</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#0a0a0a;--panel:#0f0f0f;--line:#1b1b1b;--fg:#e8e8e8;--muted:#9aa0a6;--gold:#d4af37;--ok:#22c55e;}
-*{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-.container{max-width:960px;margin:0 auto;padding:28px 18px}
-.nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.logo{display:flex;align-items:center;gap:10px}
-.logo .badge{font-weight:800;color:var(--gold);border:1px solid var(--gold);border-radius:8px;padding:6px 8px;font-size:12px}
-.btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:10px 16px;border-radius:12px;cursor:pointer;transition:.2s}
-.btn:hover{background:rgba(212,175,55,.1)}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;margin:16px 0}
-h1{color:var(--gold);font-size:30px;margin:0 0 8px}
-h2{font-size:18px;margin:0 0 8px}
-p{color:#ddd;line-height:1.6}
-.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.step{background:#0e0e0e;border:1px solid #1b1b1b;border-radius:14px;padding:16px;min-height:150px;position:relative}
-.step .n{position:absolute;top:10px;right:12px;color:var(--muted);font-size:12px}
-.step.ok{border-color:#214a2f;box-shadow:0 0 0 1px #214a2f inset}
-.kit{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #303030;border-radius:10px;background:#121212;font-size:14px}
-.badge{border:1px solid #2a2a2a;border-radius:8px;padding:2px 6px;color:var(--muted);font-size:12px}
-.center{display:flex;align-items:center;justify-content:center}
-footer{color:var(--muted);font-size:13px;margin-top:24px}
-small{color:var(--muted)}
-.notice{border-left:3px solid var(--gold);padding:10px 12px;background:#111;margin:12px 0;border-radius:8px}
-.login{display:flex;align-items:center;gap:12px;margin-top:10px}
-.login .tiktok{height:24px;width:24px;border-radius:6px;background:#111;display:inline-flex;align-items:center;justify-content:center;border:1px solid #222}
-.status{margin-top:8px;font-size:14px;color:var(--muted)}
-.success{color:var(--ok)}
-a{color:var(--gold);text-decoration:none}
-a:hover{text-decoration:underline}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MONEY.AI – TikTok Integration Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="MONEY.AI TikTok integration demo for app review.">
+  <meta property="og:title" content="MONEY.AI Demo">
+  <meta property="og:description" content="TikTok integration demo flow for verification.">
+  <meta property="og:image" content="assets/logo.png">
+  <meta name="theme-color" content="#0a0a0a">
 </head>
 <body>
 <div class="container">
+  <!-- NAV -->
   <div class="nav">
-    <div class="logo">
-      <span class="badge">MONEY.AI</span>
-      <small>Financial Education × Artificial Intelligence</small>
+    <div style="display:flex;align-items:center;gap:12px">
+      <img src="assets/logo.png" alt="MONEY.AI logo">
+      <div class="meta">Financial Education × Artificial Intelligence</div>
     </div>
     <div>
-      <a class="btn" href="./index.html">Home</a>
-      <a class="btn" href="./terms.html" style="margin-left:8px">Terms</a>
-      <a class="btn" href="./privacy.html" style="margin-left:8px">Privacy</a>
+      <a class="btn" href="index.html">Home</a>
+      <a class="btn" style="margin-left:8px" href="demo.html">Demo</a>
+      <a class="btn" style="margin-left:8px" href="terms.html">Terms</a>
+      <a class="btn" style="margin-left:8px" href="privacy.html">Privacy</a>
     </div>
   </div>
 
-  <div class="card">
+  <!-- DEMO FLOW -->
+  <section class="hero">
     <h1>TikTok Integration – Demo Flow</h1>
-    <p>This page simulates the end‑to‑end user journey required for TikTok App Review. It illustrates Login with TikTok, account connection, and access to Money.AI learning content.</p>
-    <div class="notice"><strong>Note:</strong> This is a non-production demo for verification. No real user data is collected or transmitted.</div>
-  </div>
+    <p class="meta">
+      This page simulates the end-to-end user journey required for TikTok App Review.<br>
+      <strong>Note:</strong> This is a non-production demo for verification. No real user data is collected or transmitted.
+    </p>
+  </section>
 
-  <div class="flow">
-    <div class="step" id="s1">
-      <div class="n">Step 1</div>
-      <h2>Login with TikTok</h2>
+  <div class="steps" style="display:flex;gap:16px;margin-top:20px;flex-wrap:wrap">
+    <div class="card">
+      <h3>Step 1: Login with TikTok</h3>
       <p>Users authenticate via TikTok to create a secure session in Money.AI.</p>
-      <div class="login">
-        <span class="tiktok">🎵</span>
-        <button class="btn" onclick="simulateLogin()">Login with TikTok</button>
-      </div>
-      <div id="status1" class="status">Waiting for user action…</div>
+      <button class="btn">🔑 Login with TikTok</button>
+      <p class="meta">Waiting for user action…</p>
     </div>
-
-    <div class="step" id="s2">
-      <div class="n">Step 2</div>
-      <h2>Account Connected</h2>
+    <div class="card">
+      <h3>Step 2: Account Connected</h3>
       <p>Upon consent, Money.AI receives basic profile data to personalize content.</p>
-      <div id="status2" class="status">Not connected.</div>
-      <div class="badge">Scopes: basic profile</div>
+      <p class="meta">Status: <strong>Not connected</strong></p>
     </div>
-
-    <div class="step" id="s3">
-      <div class="n">Step 3</div>
-      <h2>Access Learning Content</h2>
-      <p>Users access AI‑powered lessons and summaries in Money.AI.</p>
-      <div id="status3" class="status">Locked until login.</div>
+    <div class="card">
+      <h3>Step 3: Access Learning Content</h3>
+      <p>Users access AI-powered lessons and summaries in Money.AI.</p>
+      <p class="meta">Locked until login.</p>
     </div>
   </div>
 
-  <div class="card">
-    <h2>What reviewers will see</h2>
+  <div class="card" style="margin-top:20px">
+    <h3>What reviewers will see</h3>
     <ul>
-      <li>Working navigation to <a href="./terms.html">Terms</a> and <a href="./privacy.html">Privacy</a>.</li>
-      <li>Simulated TikTok login, session creation, and personalized content unlock.</li>
+      <li>Working navigation to <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy</a>.</li>
+      <li>Simulated TikTok login → session creation → content unlock.</li>
       <li>Clear disclosure that this is a demo and no real data is sent.</li>
     </ul>
   </div>
 
-  <footer>© 2025 MONEY.AI • Contact: <a href="mailto:support@moneyai.app">support@moneyai.app</a></footer>
+  <!-- FOOTER -->
+  <div class="footer">
+    © 2025 MONEY.AI • <span class="meta">Contact: 
+    <a href="mailto:support@moneyai.app">support@moneyai.app</a></span>
+  </div>
 </div>
-
-<script>
-function simulateLogin(){
-  const s1 = document.getElementById('status1');
-  const s2 = document.getElementById('status2');
-  const s3 = document.getElementById('status3');
-  document.getElementById('s1').classList.add('ok');
-  s1.textContent = 'Redirecting to TikTok… (simulated)';
-  setTimeout(()=>{
-    s1.textContent = 'User granted permission ✓';
-    document.getElementById('s2').classList.add('ok');
-    s2.innerHTML = '<span class="success">Connected as @demo_user</span>';
-    setTimeout(()=>{
-      document.getElementById('s3').classList.add('ok');
-      s3.innerHTML = '<span class="success">Content unlocked: AI‑powered finance lessons available.</span>';
-    }, 800);
-  }, 900);
-}
-</script>
 </body>
 </html>
